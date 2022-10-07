@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: cruft-update-${{ github.ref }}-1
+  group: {%raw%}cruft-update-${{ github.ref }}-1{%endraw%}
   cancel-in-progress: true
 
 jobs:
@@ -31,9 +31,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.REPO_SETUP_TOKEN }}
+          token: {%raw%}${{ secrets.REPO_SETUP_TOKEN }}{%endraw%}
           commit-message: >-
-            chore: update project structure to ${{ env.TEMPLATE_COMMIT }}
+            {%raw%}chore: update project structure to ${{ env.TEMPLATE_COMMIT }}{%endraw%}
           title: "[Actions] Auto-Sync cookiecutter template"
           body: ""
           branch: cruft-update
