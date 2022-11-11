@@ -20,7 +20,6 @@
         <spring-cloud.version>2021.0.5</spring-cloud.version>
         <logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
         <log4j2.version>2.17.1</log4j2.version>
-        <logzio-logback-appender.version>v1.0.25</logzio-logback-appender.version>
         <micrometer-registry-logzio.version>1.0.2</micrometer-registry-logzio.version>
 
         <sonar.exclusions>
@@ -58,6 +57,12 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!-- mapstruct -->
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -93,11 +98,6 @@
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
             <version>${logstash-logback-encoder.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.logz.logback</groupId>
-            <artifactId>logzio-logback-appender</artifactId>
-            <version>${logzio-logback-appender.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
