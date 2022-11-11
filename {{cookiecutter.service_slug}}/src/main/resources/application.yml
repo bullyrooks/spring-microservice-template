@@ -21,5 +21,5 @@ management:
 logging:
   level:
     root: INFO
-    com.{{ cookiecutter.package_name }}: DEBUG
+    com.{{ cookiecutter.service_namespace }}: DEBUG
     io.micrometer.logzio: WARN
