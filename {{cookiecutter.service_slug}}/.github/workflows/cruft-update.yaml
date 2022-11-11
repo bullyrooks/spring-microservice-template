@@ -11,7 +11,7 @@ jobs:
   cruft:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -29,7 +29,7 @@ jobs:
           echo "TEMPLATE_COMMIT=$(cat .cruft.json | jello -r "_['commit'][:8]")" >> $GITHUB_ENV
       # behaviour if PR already exists: https://github.com/marketplace/actions/create-pull-request#action-behaviour
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: {%raw%}${{ secrets.REPO_SETUP_TOKEN }}{%endraw%}
           commit-message: >-
