@@ -36,6 +36,10 @@
             **/*Mapper*,
             **/*Application*
         </sonar.exclusions>
+
+        <!-- custom properties go here -->
+
+        <!-- /custom properties -->
     </properties>
     <dependencies>
         <dependency>
