@@ -1,0 +1,5 @@
+realtymole:
+  active: false
+  quota:
+    limit: 2000
+    warnPct: 75
