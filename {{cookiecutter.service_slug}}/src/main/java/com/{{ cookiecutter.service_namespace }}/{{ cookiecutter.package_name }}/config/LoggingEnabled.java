@@ -1,4 +1,4 @@
-package com.bullyrooks.{{ cookiecutter.package_name }}.config;
+package com.{{ cookiecutter.service_namespace }}.{{ cookiecutter.package_name }}.config;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

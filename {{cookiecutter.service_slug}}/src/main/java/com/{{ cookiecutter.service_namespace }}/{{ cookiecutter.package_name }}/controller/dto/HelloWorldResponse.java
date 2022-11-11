@@ -1,4 +1,4 @@
-package com.bullyrooks.{{ cookiecutter.package_name }}.controller.dto;
+package com.{{ cookiecutter.service_namespace }}.{{ cookiecutter.package_name }}.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.bullyrooks.{{ cookiecutter.package_name }}.controller;
+package com.{{ cookiecutter.service_namespace }}.{{ cookiecutter.package_name }}.controller;
 
 import com.bullyrooks.{{ cookiecutter.package_name }}.controller.dto.HelloWorldResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
