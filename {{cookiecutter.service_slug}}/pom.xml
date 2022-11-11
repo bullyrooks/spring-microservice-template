@@ -8,7 +8,7 @@
         <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.{{ cookiecutter.package_name }}</groupId>
+    <groupId>com.{{ cookiecutter.service_namespace }}</groupId>
     <artifactId>{{ cookiecutter.service_slug }}</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>{{ cookiecutter.service_name }}</name>
