@@ -14,7 +14,7 @@ jobs:
   call-get-version:
     uses: bullyrooks/service-workflow/.github/workflows/get-version.yaml@main
     secrets:
-      GH_TOKEN: {%raw%}${{ secrets.CHART_TOKEN }}{%endraw%}
+      GH_TOKEN: {%raw%}${{ secrets.{%endraw%}{{ cookiecutter.workflow_token }} {%raw%}}}{%endraw%}
 
   call-compile:
     uses: bullyrooks/service-workflow/.github/workflows/compile.yaml@main
@@ -27,7 +27,7 @@ jobs:
       version: {%raw%}${{ needs.call-get-version.outputs.version }}{%endraw%}
       image-name: {{ cookiecutter.service_registry }}
     secrets:
-      GH_TOKEN: {%raw%}${{ secrets.GH_TOKEN }}{%endraw%}
+      GH_TOKEN: {%raw%}${{ secrets.{%endraw%}{{ cookiecutter.workflow_token }} {%raw%}}}{%endraw%}
 
   call-helm-chart-{{ cookiecutter.githuborg }}:
     needs:
@@ -35,6 +35,6 @@ jobs:
       - call-build-image-with-push
     uses: bullyrooks/service-workflow/.github/workflows/helm-chart-{{ cookiecutter.githuborg }}.yaml@main
     secrets:
-      GH_TOKEN: {%raw%}${{ secrets.CHART_TOKEN }}{%endraw%}
+      GH_TOKEN: {%raw%}${{ secrets.{%endraw%}{{ cookiecutter.workflow_token }} {%raw%}}}{%endraw%}
     with:
       version: {%raw%}${{ needs.call-get-version.outputs.version }}{%endraw%}
