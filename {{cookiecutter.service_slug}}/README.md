@@ -36,7 +36,7 @@ use the same token for the chart token.
 `GH_TOKEN=<token with access to the repo>`
 
 ## Setup secrets for okteto to access canister.io
-kubectl create secret --namespace {{ cookiecutter.service_namespace }} docker-registry regcred --docker-server=https://cloud.canister.io:5000 --docker-username=<canister username> --docker-password=<canister password>
+kubectl create secret --namespace {{ cookiecutter.service_namespace }} docker-registry regcred --docker-server=https://ghcr.io --docker-username=<canister username> --docker-password=<canister password>
 
 ## Setup cloud logging
 kubectl create secret --namespace {{ cookiecutter.service_namespace }} generic logzio-secrets --from-literal=LOGZIO_LOGGER_TOKEN=UaRKfHWNbOJuAIuvKjuKXWbMNuaGzNUP --from-literal=LOGZIO_METRICS_TOKEN=hiAjYwehsyFYpXRJobnhKmnUsSoxvPMz

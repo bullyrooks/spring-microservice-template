@@ -27,15 +27,14 @@ jobs:
       version: {%raw%}${{ needs.call-get-version.outputs.version }}{%endraw%}
       image-name: {{ cookiecutter.service_registry }}
     secrets:
-      canister-username: {%raw%}${{ secrets.CANISTER_USERNAME }}{%endraw%}
-      canister-password: {%raw%}${{ secrets.CANISTER_PASSWORD }}{%endraw%}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  call-helm-chart:
+  call-helm-chart-{{ cookiecutter.githuborg }}:
     needs:
       - call-get-version
       - call-build-image-with-push
-    uses: bullyrooks/service-workflow/.github/workflows/helm-chart.yaml@main
+    uses: bullyrooks/service-workflow/.github/workflows/helm-chart-{{ cookiecutter.githuborg }}.yaml@main
     secrets:
-      access-token: {%raw%}${{ secrets.CHART_TOKEN }}{%endraw%}
+      GH_TOKEN: {%raw%}${{ secrets.CHART_TOKEN }}{%endraw%}
     with:
       version: {%raw%}${{ needs.call-get-version.outputs.version }}{%endraw%}
