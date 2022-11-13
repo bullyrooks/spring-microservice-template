@@ -27,7 +27,7 @@ jobs:
       version: {%raw%}${{ needs.call-get-version.outputs.version }}{%endraw%}
       image-name: {{ cookiecutter.service_registry }}
     secrets:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GH_TOKEN: {%raw%}${{ secrets.GH_TOKEN }}{%endraw%}
 
   call-helm-chart-{{ cookiecutter.githuborg }}:
     needs:
