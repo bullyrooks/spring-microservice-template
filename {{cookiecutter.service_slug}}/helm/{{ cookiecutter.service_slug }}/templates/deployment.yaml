@@ -27,17 +27,43 @@ spec:
       serviceAccountName: {{ include "service.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - hostPath:
+            path: /var/run/datadog/
+          name: apmsocketpath
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          volumeMounts:
+            - name: apmsocketpath
+              mountPath: /var/run/datadog
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: {{ .Values.port.containerPort }}
               protocol: TCP
           env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: {{ .Values.springProfilesActive }}
+          - name: DD_ENV
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/env']
+          - name: DD_SERVICE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/service']
+          - name: DD_VERSION
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/version']
+          - name: DD_LOGS_INJECTION
+            value: "true"
+# Custom env var go here
+
+# end custom env var
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness

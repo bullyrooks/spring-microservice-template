@@ -23,6 +23,9 @@ Selector labels
 {{- define "service.selectorLabels" -}}
 app.kubernetes.io/name: {{ .Chart.Name }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+tags.datadoghq.com/env: {{ .Values.springProfilesActive }}
+tags.datadoghq.com/service: {{ .Chart.Name }}
+tags.datadoghq.com/version: {{ .Chart.Version }}
 {{- end }}
 
 {{/*

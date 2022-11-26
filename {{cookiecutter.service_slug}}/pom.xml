@@ -20,7 +20,7 @@
         <spring-cloud.version>2021.0.5</spring-cloud.version>
         <logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
         <log4j2.version>2.17.1</log4j2.version>
-        <springdoc-openapi-ui.version>1.6.12</springdoc-openapi-ui.version>
+        <springdoc-openapi-ui.version>1.6.13</springdoc-openapi-ui.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <sonar.exclusions>
             **/config/*,
@@ -35,7 +35,7 @@
             **/*Mapper*,
             **/*Application*
         </sonar.exclusions>
-
+        <logback-json-classic.version>0.1.5</logback-json-classic.version>
         <!-- custom properties go here -->
 
         <!-- /custom properties -->
@@ -121,7 +121,16 @@
             <version>${springdoc-openapi-ui.version}</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>ch.qos.logback.contrib</groupId>
+            <artifactId>logback-json-classic</artifactId>
+            <version>${logback-json-classic.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback.contrib</groupId>
+            <artifactId>logback-jackson</artifactId>
+            <version>${logback-json-classic.version}</version>
+        </dependency>
         <!-- custom dependencies go here -->
 
 
