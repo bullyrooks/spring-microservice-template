@@ -61,6 +61,11 @@ spec:
                 fieldPath: metadata.labels['tags.datadoghq.com/version']
           - name: DD_LOGS_INJECTION
             value: "true"
+          - name: MANAGEMENT_METRICS_EXPORT_DATADOG_APIKEY
+            valueFrom:
+              secretKeyRef:
+                name: datadog-secrets
+                key: DD_API_KEY
 # Custom env var go here
 
 # end custom env var

@@ -18,6 +18,19 @@ management:
       group:
         readiness:
           include: "readinessState"
+  metrics:
+    export:
+      statsd:
+        enabled: true
+        flavor: datadog
+        host: datadog-agent #kubernetes service instance
+      datadog:
+        enabled: true
+    tags:
+      application: "{{ cookiecutter.application_tag }}"
+      env: ${spring.profiles.active}
+      domain: "{{ cookiecutter.domain_tag }}"
+      service: "{{ cookiecutter.service_tag }}"
 logging:
   level:
     root: INFO

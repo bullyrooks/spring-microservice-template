@@ -8,7 +8,9 @@
   "service_namespace": "bullyrooks",
   "githuborg": "bullyrooks-org",
   "workflow_token": "GH_TOKEN",
-
+  "application_tag": "application",
+  "domain_tag": "domain",
+  "service_tag": "{{ cookiecutter.service_slug }}",
   "_copy_without_render": [
       "helm/**/templates/*"
   ]
