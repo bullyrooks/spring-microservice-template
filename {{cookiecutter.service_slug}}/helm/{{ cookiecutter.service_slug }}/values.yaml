@@ -48,20 +48,15 @@ port:
   containerPort: {{ cookiecutter.service_port }}
 
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: {{ cookiecutter.service_slug }}.opportunitygopher.com
       paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+        - path: "/"
+          pathType: Prefix
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
