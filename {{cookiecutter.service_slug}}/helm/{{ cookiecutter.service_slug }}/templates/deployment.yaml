@@ -47,25 +47,10 @@ spec:
           env:
           - name: SPRING_PROFILES_ACTIVE
             value: {{ .Values.springProfilesActive }}
-          - name: DD_ENV
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.labels['tags.datadoghq.com/env']
-          - name: DD_SERVICE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.labels['tags.datadoghq.com/service']
-          - name: DD_VERSION
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.labels['tags.datadoghq.com/version']
-          - name: DD_LOGS_INJECTION
-            value: "true"
-          - name: MANAGEMENT_METRICS_EXPORT_DATADOG_APIKEY
-            valueFrom:
-              secretKeyRef:
-                name: datadog-secrets
-                key: DD_API_KEY
+          - name: OTEL_SERVICE_NAME
+            value: {{ .Values.serviceName }}
+          - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            value: "http://otel-collector:4317"
 # Custom env var go here
 
 # end custom env var

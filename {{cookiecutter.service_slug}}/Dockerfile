@@ -1,20 +1,17 @@
-# syntax=docker/dockerfile:experimental
 FROM openjdk:15.0.2-slim-buster as build
 
 COPY .mvn .mvn
 COPY mvnw .
 COPY pom.xml .
-COPY lib lib
-
 # download dependencies
 RUN ./mvnw dependency:go-offline
-
+COPY lib lib
 COPY src src
 
 # Setup the maven cache
-RUN --mount=type=cache,target=/root/.m2,rw ./mvnw -B package -DskipTests
+RUN ./mvnw -B package -DskipTests
 
 FROM openjdk:15.0.2-slim-buster
-COPY --from=build lib/dd-java-agent.jar dd-java-agent.jar
+COPY --from=build lib/aws-opentelemetry-agent.jar aws-opentelemetry-agent.jar
 COPY --from=build target/*.jar app.jar
-ENTRYPOINT ["java", "-javaagent:dd-java-agent.jar", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-javaagent:aws-opentelemetry-agent.jar", "-jar", "app.jar"]
