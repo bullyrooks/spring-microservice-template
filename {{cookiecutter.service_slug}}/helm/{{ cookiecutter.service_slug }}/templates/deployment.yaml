@@ -27,18 +27,11 @@ spec:
       serviceAccountName: {{ include "service.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      volumes:
-        - hostPath:
-            path: /var/run/datadog/
-          name: apmsocketpath
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          volumeMounts:
-            - name: apmsocketpath
-              mountPath: /var/run/datadog
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
